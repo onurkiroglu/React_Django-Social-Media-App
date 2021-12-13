@@ -1,2 +1,2 @@
 # React_Django-Social-Media-App
-Full stack, fully-featured social media application using React, Django, Redux, Express, and Material-UI
+Twitter-like App with Python Django JavaScript and React
