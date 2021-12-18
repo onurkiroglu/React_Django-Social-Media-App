@@ -5,9 +5,24 @@ this is amazing!!!
 {% endblock head_title %}
 
 {% block content %}
-Welcome to Tweetme 2
+<div class="row text-center">
+    <div class="col">
+        <h1>Welcome to Tweetme 2</h1>
+    </div>
+</div>
 
-<div id='tweets'>
+<div class="row mb-3">
+    <div class="col-md-4 mx-auto col-10">
+        <form class="form" method="POST" action="/create-tweet">
+            {% csrf_token %}
+            <input type="hidden" value="/" name="next" />
+            <textarea class="form-control" name="content" placeholder="Your tweet"></textarea>
+            <button type="submit" class="btn btn-primary">Tweet</button>
+        </form>
+    </div>
+</div>
+
+<div class="row" id="tweets">
     Loading...
 </div>
 
@@ -33,13 +48,13 @@ function handleDidLike(tweet_id, currentCount) {
 }
 
 function LikeBtn(tweet){
-    return "<button class='btn btn-primary btn-sm' onclick=handleDidLike(" + tweet.id + "," + tweet.likes + ")>" + tweet.likes + "Likes</button>";
+    return "<button class='btn btn-primary btn-sm' onclick=handleDidLike(" + tweet.id + "," + tweet.likes + ")>" + tweet.likes + " Likes</button>";
 }
 
 
 function formatTweetElement(tweet){
     
-    var formattedTweet = "<div class='mb-4 tweet' id='tweet-" + tweet.id
+    var formattedTweet = "<div class='col-12 col-md-10 mx-auto border rounded py-3 mb-4 tweet' id='tweet-" + tweet.id
     + "'><p>" + tweet.content + 
         "</p><div class='btn-group'>" + LikeBtn(tweet) +       
         "</div></div>" 
